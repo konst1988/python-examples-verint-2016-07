@@ -6,3 +6,9 @@ print all previously inserted lines in reverse
 order (from last to first)
 """
 
+line = raw_input()
+reverse = ""
+while len(line) > 0:
+    reverse = line + "\n" + reverse
+    line = raw_input()
+print reverse
