@@ -8,9 +8,9 @@ The result should be: 14
 from random import randint
 num = randint(1,10000)
 print "num is:{}".format(num)
-sum = 0
+result = 0
 while num > 0:
     digit = num % 10
-    sum += digit
+    result += digit
     num /= 10;
-print "sum of digits is:{}".format(sum)
+print "sum of digits is:{}".format(result)
