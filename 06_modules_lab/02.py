@@ -2,3 +2,14 @@
 and prints their sum.
 """
 
+import sys
+
+if len(sys.argv) > 2:
+    (name, strnum1, strnum2) = sys.argv
+    num1 = int(strnum1)
+    num2 = int(strnum2)
+    print "{} + {} = {}".format(num1, num2, num1+num2)
+else:
+    program_name = sys.argv[0]
+    print "Usage: %s <num1> <num2>" % program_name
+    
