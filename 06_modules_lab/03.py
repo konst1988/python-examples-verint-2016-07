@@ -8,4 +8,17 @@ its name to the user.
 
 - Take threshold and path as command line arguments
 """
+import os
+import sys
 
+(_, threshold, path) = sys.argv
+for root, dirs, files in os.walk(path):
+    for name in files:
+        filename = root + "\\" + name
+        size = os.stat(filename).st_size
+        if size > int(threshold):
+            print "filename:{} size: {}".format(name, size)
+            delete = raw_input("Delete File Y\N:")
+            if delete == "Y" or delete == "y":
+                os.remove(filename)
+                print "{} Deleted".format(filename)
