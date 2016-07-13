@@ -1,10 +1,15 @@
-"""
-Write a program that takes two strings
-from the user and checks if they represent
-a valid user name.
-Valid users and passwords:
-    apple => red
-    lettuce => green
-    lemon => yellow
-    orange => orange
-"""
+import sys
+hosts = {}
+
+#read all hosts from file
+with open('4.Collections\\hosts', 'r') as f:
+    for line in f:
+        keyvalue = line.split("=")
+        hosts[keyvalue[0]] = keyvalue[1][:-1] # dont take last character as it is \n
+
+# find all requested hosts in dictionary
+for host in sys.argv[1:]:
+    if host in hosts:
+        print "IP of {} is {}".format(host, hosts[host])
+    else:
+        print "IP of {} is unknown".format(host)
