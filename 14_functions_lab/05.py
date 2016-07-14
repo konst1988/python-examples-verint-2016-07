@@ -8,3 +8,13 @@ For example:
     returns: { 'f': ['foo','fi'], 'h': ['hello', 'hi'] }
 """
 
+from collections import defaultdict
+
+def groupby(func, lst):
+    result = defaultdict(list)
+    for item in lst:
+        key = func(item)
+        result[key].append(item)
+    return result
+
+print groupby(lambda s: s[0], ['foo', 'fi', 'hello', 'hi'])
