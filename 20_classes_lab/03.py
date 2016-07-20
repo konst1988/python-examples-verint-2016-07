@@ -11,3 +11,41 @@ depends on.
 Implement widget so the following code works
 """
 
+class Widget(object):
+
+    def __init__(self, name):
+        self._name = name
+        self._depends = []
+        self._isBuilt = False
+
+    def add_dependency(self, *depends):
+        self._depends.extend([x for x in depends])
+
+    def build(self):
+        self._isBuilt = True
+        for dep in self._depends:
+            if dep._isBuilt: continue
+            dep.build()
+            print dep._name
+            
+        
+
+
+luke    = Widget("Luke")
+hansolo = Widget("Han Solo")
+leia    = Widget("Leia")
+yoda    = Widget("Yoda")
+padme   = Widget("Padme Amidala")
+anakin  = Widget("Anakin Skywalker")
+obi     = Widget("Obi-Wan")
+darth   = Widget("Darth Vader")
+_all    = Widget("All")
+
+
+luke.add_dependency(hansolo, leia, yoda)
+leia.add_dependency(padme, anakin)
+obi.add_dependency(yoda)
+darth.add_dependency(anakin)
+
+_all.add_dependency(luke, hansolo, leia, yoda, padme, anakin, obi, darth)
+_all.build()
